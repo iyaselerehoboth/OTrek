@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/image_welcome_screen_wallpaper"
+    tools:context=".WelcomeScreenActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/logo_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgView_logo"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:src="@drawable/ic_logo" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_app_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_slab_bold"
+                android:text="OTrek"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+                android:textColor="#008751"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/login_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="25dp"
+            android:paddingTop="10dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="10dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_facebook_login"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorFacebook"
+                android:text="Login With Facebook"
+                app:icon="@drawable/ic_facebook_logo" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_twitter_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorTwitter"
+                android:text="Login With Twitter"
+                app:icon="@drawable/ic_twitter_logo" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_google_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorGoogle"
+                android:text="Login With Google"
+                app:icon="@drawable/ic_google_logo" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_email_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login With Email"
+                app:icon="@drawable/ic_envelope" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
