@@ -36,8 +36,9 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/user_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <ImageView
@@ -62,7 +63,8 @@
                     android:id="@+id/mtv_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:fontFamily="@font/roboto"
                     android:text="Iyasele Rehoboth"
                     android:textAlignment="center"
@@ -70,6 +72,182 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/mtv_current_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="Lagos, Nigeria"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttons_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/first_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fab_10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:clickable="true"
+                            android:src="@drawable/ic_fab_phone"
+                            app:fabSize="auto"
+                            app:rippleColor="@color/colorAccent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/mtv_10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Make Call"
+                            android:textAlignment="center"
+                            android:textAppearance="@android:style/TextAppearance.Material.Menu"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fab_11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:clickable="true"
+                            android:src="@drawable/ic_fab_whatsapp"
+                            app:fabSize="auto"
+                            app:rippleColor="@color/colorAccent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/mtv_11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="WhatsApp"
+                            android:textAlignment="center"
+                            android:textAppearance="@android:style/TextAppearance.Material.Menu"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fab_12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:clickable="true"
+                            android:src="@drawable/ic_fab_music_headphone"
+                            app:fabSize="auto"
+                            app:rippleColor="@color/colorAccent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/mtv_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Music"
+                            android:textAlignment="center"
+                            android:textAppearance="@android:style/TextAppearance.Material.Menu"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/second_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fab_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:clickable="true"
+                            android:src="@drawable/ic_fab_share_image"
+                            app:fabSize="auto"
+                            app:rippleColor="@color/colorAccent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/mtv_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Share Selfie"
+                            android:textAlignment="center"
+                            android:textAppearance="@android:style/TextAppearance.Material.Menu"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fab_21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/white"
+                            android:clickable="true"
+                            android:src="@drawable/ic_fab_broadcast"
+                            app:fabSize="auto"
+                            app:rippleColor="@color/colorAccent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/mtv_21"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Location"
+                            android:textAlignment="center"
+                            android:textAppearance="@android:style/TextAppearance.Material.Menu"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
