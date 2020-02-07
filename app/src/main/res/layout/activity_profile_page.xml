@@ -9,17 +9,16 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="@style/AppTheme" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -100,26 +99,26 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="75dp"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/fab_10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:clickable="true"
-                            android:src="@drawable/ic_fab_phone"
-                            app:fabSize="auto"
-                            app:rippleColor="@color/colorAccent" />
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/img_btn_make_call"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/colorPrimaryDark"
+                            app:srcCompat="@drawable/ic_fab_phone" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/mtv_10"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:text="Make Call"
                             android:textAlignment="center"
                             android:textAppearance="@android:style/TextAppearance.Material.Menu"
@@ -128,26 +127,26 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="75dp"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/fab_11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:clickable="true"
-                            android:src="@drawable/ic_fab_whatsapp"
-                            app:fabSize="auto"
-                            app:rippleColor="@color/colorAccent" />
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/img_btn_whatsapp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/colorPrimaryDark"
+                            app:srcCompat="@drawable/ic_fab_whatsapp" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/mtv_11"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:text="WhatsApp"
                             android:textAlignment="center"
                             android:textAppearance="@android:style/TextAppearance.Material.Menu"
@@ -156,26 +155,26 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="75dp"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/fab_12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:clickable="true"
-                            android:src="@drawable/ic_fab_music_headphone"
-                            app:fabSize="auto"
-                            app:rippleColor="@color/colorAccent" />
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/img_btn_music"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/colorPrimaryDark"
+                            app:srcCompat="@drawable/ic_fab_music_headphone" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/mtv_12"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:text="Music"
                             android:textAlignment="center"
                             android:textAppearance="@android:style/TextAppearance.Material.Menu"
@@ -192,26 +191,26 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="75dp"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/fab_20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:clickable="true"
-                            android:src="@drawable/ic_fab_share_image"
-                            app:fabSize="auto"
-                            app:rippleColor="@color/colorAccent" />
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/img_btn_selfie"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/colorPrimaryDark"
+                            app:srcCompat="@drawable/ic_fab_share_image" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/mtv_20"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:text="Share Selfie"
                             android:textAlignment="center"
                             android:textAppearance="@android:style/TextAppearance.Material.Menu"
@@ -220,26 +219,26 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="75dp"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/fab_21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/white"
-                            android:clickable="true"
-                            android:src="@drawable/ic_fab_broadcast"
-                            app:fabSize="auto"
-                            app:rippleColor="@color/colorAccent" />
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/img_btn_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/colorPrimaryDark"
+                            app:srcCompat="@drawable/ic_fab_broadcast" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/mtv_21"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:text="Location"
                             android:textAlignment="center"
                             android:textAppearance="@android:style/TextAppearance.Material.Menu"
