@@ -61,29 +61,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        /*Facebook's app events logger*//*
-        FacebookSdk.sdkInitialize(WelcomeScreenActivity.this);
-        AppEventsLogger.activateApp(this);*/
-
-        mCallbackManager = CallbackManager.Factory.create();
-        btn_facebook_login.setReadPermissions("email", "public_profile");
-        btn_facebook_login.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG, "facebook:onSuccess" + loginResult);
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-            }
-        });
+        initFacebookLogin();
 
     }
 
@@ -108,6 +86,28 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         startActivity(new Intent(WelcomeScreenActivity.this, ProfilePageActivity.class));
     }
 
+    public void initFacebookLogin(){
+        mCallbackManager = CallbackManager.Factory.create();
+        btn_facebook_login.setReadPermissions("email", "public_profile");
+        btn_facebook_login.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d(TAG, "facebook:onSuccess" + loginResult);
+                handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+    }
+
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d("OTrek CHECK", "handleFacebookAccessToken:" + token);
 
@@ -118,8 +118,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Log.d(TAG, user.getDisplayName() + " " + user.getPhoneNumber() + " " + user.getPhotoUrl());
-                        Toast.makeText(this, user.getPhoneNumber(), Toast.LENGTH_LONG).show();
+                        Log.d(TAG, user.getDisplayName() + " " + user.getPhotoUrl());
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -131,6 +130,5 @@ public class WelcomeScreenActivity extends AppCompatActivity {
                     // ...
                 });
     }
-
 
 }
