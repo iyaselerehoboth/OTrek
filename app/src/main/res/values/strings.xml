@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">OTrek</string>
     <string name="title_activity_main_page">MainPageActivity</string>
+
+    <!--Facebook sign in strings. NB: DO NOT EDIT-->
+    <string name="facebook_app_id">497643124228489</string>
+    <string name="fb_login_protocol_scheme">fb497643124228489</string>
+
 </resources>

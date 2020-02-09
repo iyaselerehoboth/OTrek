@@ -60,11 +60,12 @@
             android:paddingRight="25dp"
             android:paddingBottom="10dp">
 
-            <com.google.android.material.button.MaterialButton
+            <com.facebook.login.widget.LoginButton
                 android:id="@+id/btn_facebook_login"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/colorFacebook"
                 android:text="Login With Facebook"
                 app:icon="@drawable/ic_facebook_logo" />

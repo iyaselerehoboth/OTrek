@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "83918001957",
+    "firebase_url": "https://otrek-53d43.firebaseio.com",
+    "project_id": "otrek-53d43",
+    "storage_bucket": "otrek-53d43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83918001957:android:37c78ee16c3f7875e7eccc",
+        "android_client_info": {
+          "package_name": "com.iyaselerehoboth.otrek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83918001957-i1svcr8affqvipg8kq2jfg5j2ufj28jc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt4sW4MG9i5OFutlG1IkRQH6Ns36uH21Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83918001957-i1svcr8affqvipg8kq2jfg5j2ufj28jc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
