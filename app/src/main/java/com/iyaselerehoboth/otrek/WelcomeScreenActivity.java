@@ -139,27 +139,20 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithFacebook(AccessToken token) {
-        Log.d("OTrek CHECK", "firebaseAuthWithFacebook:" + token);
+        Log.d(TAG, "firebaseAuthWithFacebook:" + token);
 
-        ProgressDialog prgFacebook = new ProgressDialog(getApplicationContext());
-        prgFacebook.setTitle("Loading...");
-        prgFacebook.setMessage("Fetching User Data");
-        prgFacebook.show();
-
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+       AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "signInWithCredential:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        prgFacebook.dismiss();
                         saveUserAndRedirect(user);
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
                         Toast.makeText(WelcomeScreenActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
-                        prgFacebook.dismiss();
                     }
                 });
     }
@@ -167,22 +160,17 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct){
         Log.d(TAG, "firebaseAuthWithGoogle: " + acct.getId());
 
-        ProgressDialog prgGoogle = new ProgressDialog(getApplicationContext());
-        prgGoogle.setTitle("Loading...");
-        prgGoogle.setMessage("Fetching User Data");
-        prgGoogle.show();
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+       AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if(task.isSuccessful()){
                         Log.d(TAG, "signInWithCredential:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        prgGoogle.dismiss();
                         saveUserAndRedirect(user);
                     }else{
                         Log.d(TAG, "signInWithCredential:failure", task.getException());
-                        prgGoogle.dismiss();
+                        Toast.makeText(WelcomeScreenActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -191,7 +179,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == RC_SIGN_IN){
+        if(requestCode == RC_SIGN_IN && resultCode == RESULT_OK){
             //Response meant for Google.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try{

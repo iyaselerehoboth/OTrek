@@ -1,15 +1,19 @@
 package com.iyaselerehoboth.otrek;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.iyaselerehoboth.otrek.Database.SessionManager;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -57,7 +61,25 @@ public class ProfilePageActivity extends AppCompatActivity {
         initProfileViews();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_profile_page, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_edit_profile:
+                return true;
+            case R.id.menu_sign_out:
+                signOutUser();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 
     @OnClick({R.id.img_btn_selfie, R.id.img_btn_music, R.id.img_btn_location, R.id.img_btn_whatsapp, R.id.img_btn_make_call})
     public void actionButton(AppCompatImageButton imgBtn){
@@ -86,6 +108,10 @@ public class ProfilePageActivity extends AppCompatActivity {
         mtv_username.setText("Welcome, " + user.get(SessionManager.KEY_USER_FULL_NAME));
     }
 
-
+    public void signOutUser(){
+        FirebaseAuth.getInstance().signOut();
+        session.clearUserDetails();
+        finish();
+    }
 
 }
