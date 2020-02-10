@@ -17,6 +17,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +28,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.iyaselerehoboth.otrek.Database.SessionManager;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,10 +38,7 @@ import butterknife.OnClick;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
     @BindView(R.id.btn_facebook_login)
-    LoginButton btn_facebook_login;
-
-    @BindView(R.id.btn_twitter_login)
-    MaterialButton btn_twitter_login;
+    MaterialButton btn_facebook_login;
 
     @BindView(R.id.btn_email_login)
     MaterialButton btn_email_login;
@@ -46,6 +47,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     MaterialButton btn_google_login;
 
     CallbackManager mCallbackManager;
+    SessionManager session;
     private FirebaseAuth mAuth;
     private static String TAG = "OTrek CHECK";
 
@@ -54,6 +56,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
         ButterKnife.bind(this);
+        session = new SessionManager(WelcomeScreenActivity.this);
 
         // In Activity's onCreate() for instance
         // To make the notification bar transparent.
@@ -61,7 +64,6 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        initFacebookLogin();
 
     }
 
@@ -86,10 +88,15 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         startActivity(new Intent(WelcomeScreenActivity.this, ProfilePageActivity.class));
     }
 
+    @OnClick(R.id.btn_facebook_login)
+    public void facebookLogin(){
+        initFacebookLogin();
+    }
+
     public void initFacebookLogin(){
         mCallbackManager = CallbackManager.Factory.create();
-        btn_facebook_login.setReadPermissions("email", "public_profile");
-        btn_facebook_login.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        LoginManager.getInstance().logInWithReadPermissions(WelcomeScreenActivity.this, Arrays.asList("email", "public_profile"));
+        LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess" + loginResult);
@@ -118,7 +125,15 @@ public class WelcomeScreenActivity extends AppCompatActivity {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Log.d(TAG, user.getDisplayName() + " " + user.getPhotoUrl());
+
+                        try{
+                            //Save user basic details into shared preferences.
+                            session.setUserDetails(user.getEmail(), user.getDisplayName(), String.valueOf(user.getPhotoUrl()));
+                        }catch (NullPointerException e){
+                            e.printStackTrace();
+                        }
+
+                        startActivity(new Intent(WelcomeScreenActivity.this, ProfilePageActivity.class));
 
                     } else {
                         // If sign in fails, display a message to the user.

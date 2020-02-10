@@ -60,24 +60,15 @@
             android:paddingRight="25dp"
             android:paddingBottom="10dp">
 
-            <com.facebook.login.widget.LoginButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_facebook_login"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/colorFacebook"
-                android:padding="10dp"
                 android:text="Login With Facebook"
                 app:icon="@drawable/ic_facebook_logo" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_twitter_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorTwitter"
-                android:text="Login With Twitter"
-                app:icon="@drawable/ic_twitter_logo" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_google_login"
@@ -85,7 +76,9 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorGoogle"
                 android:text="Login With Google"
-                app:icon="@drawable/ic_google_logo" />
+                android:textColor="@android:color/black"
+                app:icon="@drawable/ic_google_logo"
+                app:iconTint="@color/common_google_signin_btn_tint" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_email_login"
