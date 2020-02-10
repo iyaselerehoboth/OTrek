@@ -57,6 +57,8 @@ public class ProfilePageActivity extends AppCompatActivity {
         initProfileViews();
     }
 
+
+
     @OnClick({R.id.img_btn_selfie, R.id.img_btn_music, R.id.img_btn_location, R.id.img_btn_whatsapp, R.id.img_btn_make_call})
     public void actionButton(AppCompatImageButton imgBtn){
         switch (imgBtn.getId()){

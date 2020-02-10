@@ -5,5 +5,8 @@
     <!--Facebook sign in strings. NB: DO NOT EDIT-->
     <string name="facebook_app_id">497643124228489</string>
     <string name="fb_login_protocol_scheme">fb497643124228489</string>
+    
+    <!--Google sign in strings. NB: DO NOT EDIT-->
+    <string name="oauth2_web_client_id">83918001957-i1svcr8affqvipg8kq2jfg5j2ufj28jc.apps.googleusercontent.com</string>
 
 </resources>

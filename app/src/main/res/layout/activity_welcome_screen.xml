@@ -74,11 +74,9 @@
                 android:id="@+id/btn_google_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorGoogle"
+                android:background="@color/colorGoogle"
                 android:text="Login With Google"
-                android:textColor="@android:color/black"
-                app:icon="@drawable/ic_google_logo"
-                app:iconTint="@color/common_google_signin_btn_tint" />
+                app:icon="@drawable/ic_search" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_email_login"
