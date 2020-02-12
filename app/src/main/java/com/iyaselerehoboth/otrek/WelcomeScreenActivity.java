@@ -61,6 +61,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_screen);
         ButterKnife.bind(this);
         session = new SessionManager(WelcomeScreenActivity.this);
+        session.clearUserDetails();
 
         // In Activity's onCreate() for instance
         // To make the notification bar transparent.

@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -71,6 +73,7 @@ public class ProfilePageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu_edit_profile:
+                //Do Something
                 return true;
             case R.id.menu_sign_out:
                 signOutUser();
@@ -81,7 +84,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.img_btn_selfie, R.id.img_btn_music, R.id.img_btn_location, R.id.img_btn_whatsapp, R.id.img_btn_make_call})
+    @OnClick({R.id.img_btn_selfie, R.id.img_btn_music, R.id.img_btn_location, R.id.img_btn_whatsapp, R.id.img_btn_make_call, R.id.fab_profile_page})
     public void actionButton(AppCompatImageButton imgBtn){
         switch (imgBtn.getId()){
             case R.id.img_btn_make_call:
@@ -91,7 +94,12 @@ public class ProfilePageActivity extends AppCompatActivity {
                 startActivity(new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER));
                 break;
             case R.id.img_btn_whatsapp:
+                startWhatsAppChat();
                 break;
+            case R.id.fab_profile_page:
+                initTrekking();
+                break;
+
         }
     }
 
@@ -112,6 +120,23 @@ public class ProfilePageActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         session.clearUserDetails();
         finish();
+    }
+
+    public void startWhatsAppChat(){
+        try{
+            startActivity(new Intent()
+                    .setAction(Intent.ACTION_SEND)
+                    .setType("text/plain")
+                    .setPackage("com.whatsapp"));
+        }catch (ActivityNotFoundException e){
+            e.printStackTrace();
+            Toast.makeText(this, "Kindly install WhatsApp", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public void initTrekking(){
+        //Do many things.
     }
 
 }
