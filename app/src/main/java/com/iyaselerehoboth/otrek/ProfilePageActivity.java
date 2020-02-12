@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.iyaselerehoboth.otrek.Database.SessionManager;
@@ -50,6 +51,9 @@ public class ProfilePageActivity extends AppCompatActivity {
     @BindView(R.id.mtv_username)
     MaterialTextView mtv_username;
 
+    @BindView(R.id.fab_profile_page)
+    FloatingActionButton fab_profile_page;
+
     SessionManager session;
     HashMap<String, String> user;
     @Override
@@ -84,7 +88,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.img_btn_selfie, R.id.img_btn_music, R.id.img_btn_location, R.id.img_btn_whatsapp, R.id.img_btn_make_call, R.id.fab_profile_page})
+    @OnClick({R.id.img_btn_selfie, R.id.img_btn_music, R.id.img_btn_location, R.id.img_btn_whatsapp, R.id.img_btn_make_call})
     public void actionButton(AppCompatImageButton imgBtn){
         switch (imgBtn.getId()){
             case R.id.img_btn_make_call:
@@ -96,11 +100,13 @@ public class ProfilePageActivity extends AppCompatActivity {
             case R.id.img_btn_whatsapp:
                 startWhatsAppChat();
                 break;
-            case R.id.fab_profile_page:
-                initTrekking();
-                break;
 
         }
+    }
+
+    @OnClick(R.id.fab_profile_page)
+    public void fabOnClick(){
+        initTrekking();
     }
 
     public void initProfileViews(){
@@ -137,6 +143,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
     public void initTrekking(){
         //Do many things.
+        startActivity(new Intent(ProfilePageActivity.this, MapsActivity.class));
     }
 
 }
