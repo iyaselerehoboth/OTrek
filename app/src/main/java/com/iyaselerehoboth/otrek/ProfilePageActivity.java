@@ -3,9 +3,13 @@ package com.iyaselerehoboth.otrek;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
@@ -20,7 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.iyaselerehoboth.otrek.Database.SessionManager;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,13 +62,17 @@ public class ProfilePageActivity extends AppCompatActivity {
 
     SessionManager session;
     HashMap<String, String> user;
+    Boolean mLocationPermissionGranted;
+    String[] appPermissions = {
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
         ButterKnife.bind(this);
         session = new SessionManager(ProfilePageActivity.this);
-
+        mLocationPermissionGranted = false;
         setSupportActionBar(toolbar_profile);
         initProfileViews();
     }
@@ -143,7 +153,30 @@ public class ProfilePageActivity extends AppCompatActivity {
 
     public void initTrekking(){
         //Do many things.
-        startActivity(new Intent(ProfilePageActivity.this, MapsActivity.class));
+        if(isLocationPermissionGranted()){
+            startActivity(new Intent(ProfilePageActivity.this, MapsActivity.class));
+        }
+    }
+
+    private boolean isLocationPermissionGranted(){
+        //Check which permissions are granted
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        for(String perm : appPermissions){
+            if(ContextCompat.checkSelfPermission(this, perm) != PackageManager.PERMISSION_GRANTED){
+                listPermissionsNeeded.add(perm);
+            }
+        }
+
+        //Ask for non-granted permissions
+        if(!listPermissionsNeeded.isEmpty()){
+            ActivityCompat.requestPermissions(this,
+                    listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
+                    1150);
+            return false;
+        }
+
+        //All permissions granted.
+        return true;
     }
 
 }
