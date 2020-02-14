@@ -233,7 +233,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 super.onLocationResult(locationResult);
-
+                getDeviceLocation();
+                Toast.makeText(MapsActivity.this, "Location callback" + locationResult.getLastLocation().getLatitude() + " " + locationResult.getLastLocation().getLongitude(), Toast.LENGTH_LONG).show();
                 //Current location = locationResult.getLastLocation.
             }
         };
