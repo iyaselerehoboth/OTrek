@@ -66,7 +66,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationSettingsRequest mLocationSettingsRequest;
     private LocationRequest mLocationRequest;
     private LocationCallback mLocationCallback;
-    private LocationListener mLocationListener;
 
     /**
      * Constant used in the location settings dialog.
@@ -220,8 +219,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void createLocationRequest(){
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(1 * 1000)
-                .setFastestInterval(5 * 100)
+                .setInterval(3 * 1000)
+                //Set the minimum displacement between location updates in meters
+                .setFastestInterval(2 * 1000)
                 .setSmallestDisplacement(5.0f);
     }
 
@@ -234,7 +234,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onLocationResult(LocationResult locationResult) {
                 super.onLocationResult(locationResult);
                 getDeviceLocation();
-                Toast.makeText(MapsActivity.this, "Location callback" + locationResult.getLastLocation().getLatitude() + " " + locationResult.getLastLocation().getLongitude(), Toast.LENGTH_LONG).show();
                 //Current location = locationResult.getLastLocation.
             }
         };
@@ -323,7 +322,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, DEFAULT_ZOOM));
         }else{
             MarkerAnimationUtils.animateMarkerTo(myMarker, latlng);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, DEFAULT_ZOOM));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
         }
     }
 }
